@@ -43,7 +43,7 @@ Temporary Items
 .apdisk
 
 #yolo
-HaxeFlixel Test/export
+gt/export
 *.hxproj
-HaxeFlixel Test/HaxeFlixel Test.hxproj
+gt/glitch.hxproj
 *.db
