@@ -17,7 +17,7 @@ class PlayState extends FlxState
 {
 	public var grid:FlxTilemap;
 	public var grid2:FlxTilemap;
-	
+	private var face:FlxSprite;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -25,24 +25,25 @@ class PlayState extends FlxState
 	{
 		FlxG.camera.bgColor = 0x00000000;
 		createGrid();
+		face = new FlxSprite(16, 16);
+		face.loadGraphic("assets/images/memefacetest.png", true, 32, 32);
+		face.animation.add("down", [0, 1, 2], 1, true);
+	
+		add(face);
+		face.animation.play("down");
 		super.create();
 		
 	}
 	
 	function createGrid():Void
 	{
-		grid = new FlxTilemap();
-		grid.loadMap(Assets.getText("assets/data/grid.csv"), "assets/images/grid.png", 64, 64);
-		add(grid);
-		grid2 = new FlxTilemap();
-		grid2.loadMap(Assets.getText("assets/data/grid2.csv"), "assets/images/grid.png", 64, 64);
-		add(grid2);
 		
+		grid2 = new FlxTilemap();
+		grid2.loadMap(Assets.getText("assets/data/grid2.csv"), "assets/images/gridtest3.png", 64, 64);
+		add(grid2);
 	}
-	/**
-	 * Function that is called when this state is destroyed - you might want to 
-	 * consider setting all objects this state uses to null to help garbage collection.
-	 */
+
+
 	override public function destroy():Void
 	{
 		super.destroy();
