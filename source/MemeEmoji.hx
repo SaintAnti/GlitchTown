@@ -15,9 +15,11 @@ import flixel.util.FlxAngle;
 
 class MemeEmoji extends FlxSprite
 {      
-        public var speed:Float = 5;
+		//basic speed
+        public var speed:Float = 4;
 		public var moving:Bool = false;
 		
+		var timer: Float = 0;
 		var x_speed:Float = 0;
 		var y_speed:Float = 0;
 		var waypoint_x:Float = FlxG.mouse.x - 16;
@@ -68,13 +70,23 @@ class MemeEmoji extends FlxSprite
 				x_speed = speed * dist_x / dist_total;
 				y_speed = speed * dist_y / dist_total;
 				
+				//changes facing direction according to x_speed (left and right)
+				if (x_speed <= 0) {
+					this.scale.set(-1.0, 1.0);
+				} else {
+					this.scale.set(1.0, 1.0);
+				}
+				
+				
 				//set moving to true, so that face starts moving
 				moving = true;
 			}
 			
+			//when moving is set to, this thing goes in motion..
 			if (moving == true) 
 			{
 				
+				//sprite moves in the speed calculated from above
 				x += x_speed;
 				y += y_speed;
 				
@@ -83,7 +95,31 @@ class MemeEmoji extends FlxSprite
 					x = waypoint_x;
 					y = waypoint_y;
 					moving = false;
+					this.scale.set(1.0, 1.0);
 				}
+				
+				
+				//this section is purely cosmetic;
+				//face's size shifts up and down as it moves
+				timer++;
+				if (timer % 3 == 0) 
+				{
+					if (x_speed <= 0) {
+						this.scale.set(-1.15, 1.0);
+					} else {
+						this.scale.set(1.15, 1.0);
+					}
+				} 
+				else
+				{
+					if (x_speed <= 0) {
+						this.scale.set(-0.95, 0.95);
+					} else {
+						this.scale.set(0.95, 0.95);
+					}
+				}
+				
+				
 			}
 			
 		}
