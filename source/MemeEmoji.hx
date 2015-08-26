@@ -16,6 +16,11 @@ import flixel.util.FlxAngle;
 class MemeEmoji extends FlxSprite
 {      
         public var speed:Float = 400;
+		
+		public var moving:Int = 0;
+		public var waypoint_x:Int = 0;
+		public var waypoint_y:Int = 0;
+		
        
         public function new(X:Float=0, Y:Float=0)
         {
