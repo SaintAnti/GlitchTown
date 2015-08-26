@@ -15,8 +15,11 @@ import flixel.util.FlxAngle;
 
 class MemeEmoji extends FlxSprite
 {      
-		//basic speed
+		//basic speed <- this is important
         public var speed:Float = 4;
+		
+		
+		//...these are not important
 		public var moving:Bool = false;
 		
 		var timer: Float = 0;
@@ -28,24 +31,14 @@ class MemeEmoji extends FlxSprite
 		var dist_x:Float = 0;
 		var dist_y:Float = 0;
 		var dist_total:Float = 0;
-		
+		//...important stuff starts below
        
         public function new(X:Float=0, Y:Float=0)
         {
                 super(X * 64 + 16, Y * 64 + 16);
                 loadGraphic("assets/images/memeface2.png", true, 32, 32);
-                animation.add("idle1", [1, 2, 3], 1, true);
+                animation.add("idle1", [1, 2, 3], 36, true);
                 animation.play("idle1");
-<<<<<<< HEAD
-=======
-                setFacingFlip(FlxObject.RIGHT, false, false);
-                setFacingFlip(FlxObject.LEFT, true, false);
-                setFacingFlip(FlxObject.UP, false, false);
-                setFacingFlip(FlxObject.DOWN, false, false);
-                animation.add("lr", [1, 2, 3], 1, false);
-                animation.add("u", [1, 2, 3], 1, false);
-                animation.add("d", [1, 2, 3], 1, false);
->>>>>>> origin/master
                 drag.x = drag.y = 1600;
         }
        
