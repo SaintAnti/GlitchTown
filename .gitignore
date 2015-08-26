@@ -1,5 +1,2 @@
-
-./export
-/export
-export/*
-./export/*
+export/
+*.hxproj
