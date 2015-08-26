@@ -19,7 +19,7 @@ class PlayState extends FlxState
 {
 	public var grid:FlxTilemap;
 	public var face:MemeEmoji;
-	private var movePath = new FlxPath();
+	//private var movePath = new FlxPath();
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -41,7 +41,18 @@ class PlayState extends FlxState
 		add(grid);
 
 	}
-
+	
+	function mousemove():Void
+	{
+		if (FlxG.mouse.justPressed)
+		{
+			face.x = FlxG.mouse.x;
+			face.y = FlxG.mouse.y;
+		}
+	}
+	
+	
+	/* old movement
 	function movement():Void
 	{
 		if (FlxG.keys.anyPressed(["D, RIGHT"]))
@@ -52,7 +63,7 @@ class PlayState extends FlxState
 				movePath.start(face, coords);
 			}
 		}
-	}
+	}*/
 	override public function destroy():Void
 	{
 		super.destroy();
@@ -63,7 +74,7 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
-		movement();
+		mousemove();
 		super.update();
 	}	
 }
