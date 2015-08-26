@@ -26,12 +26,13 @@ class PlayState extends FlxState
 	 */
 	override public function create():Void
 	{
+		super.create();
 		FlxG.camera.bgColor = 0x00000000;
 		add(bg);
 		createGrid();
 		face = new MemeEmoji(0, 0);
 		add(face);
-		super.create();
+		//FlxG.sound.playMusic("assets/music/ac1.mp3");
 		
 	}
 	
