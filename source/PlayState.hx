@@ -42,15 +42,6 @@ class PlayState extends FlxState
 
 	}
 	
-	function mousemove():Void
-	{
-		if (FlxG.mouse.justPressed)
-		{
-			face.x = FlxG.mouse.x;
-			face.y = FlxG.mouse.y;
-		}
-	}
-	
 	
 	/* old movement
 	function movement():Void
@@ -74,7 +65,6 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
-		mousemove();
 		super.update();
 	}	
 }
