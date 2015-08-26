@@ -42,6 +42,18 @@ class PlayState extends FlxState
 
 	}
 	
+<<<<<<< HEAD
+=======
+	function mousemove():Void
+	{
+		if (FlxG.mouse.justPressed)
+		{
+			face.x = FlxG.mouse.x - 16;
+			face.y = FlxG.mouse.y - 16;
+		}
+	}
+	
+>>>>>>> origin/master
 	
 	/* old movement
 	function movement():Void
