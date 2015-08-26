@@ -5,10 +5,12 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.tile.FlxTile;
-import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.tile.FlxTilemap;
 import openfl.Assets;
+import flixel.FlxObject;
+import flixel.util.FlxPoint;
+import flixel.util.FlxPath;
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -16,8 +18,8 @@ import openfl.Assets;
 class PlayState extends FlxState
 {
 	public var grid:FlxTilemap;
-	public var grid2:FlxTilemap;
-	private var face:FlxSprite;
+	public var face:MemeEmoji;
+	private var movePath = new FlxPath();
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -25,25 +27,32 @@ class PlayState extends FlxState
 	{
 		FlxG.camera.bgColor = 0x00000000;
 		createGrid();
-		face = new FlxSprite(16, 16);
-		face.loadGraphic("assets/images/memefacetest.png", true, 32, 32);
-		face.animation.add("down", [0, 1, 2], 1, true);
-	
+		face = new MemeEmoji(1, 1);
 		add(face);
-		face.animation.play("down");
 		super.create();
 		
 	}
 	
 	function createGrid():Void
 	{
-		
-		grid2 = new FlxTilemap();
-		grid2.loadMap(Assets.getText("assets/data/grid2.csv"), "assets/images/gridtest3.png", 64, 64);
-		add(grid2);
+		grid = new FlxTilemap();
+		grid.loadMap(Assets.getText("assets/data/grid2.csv"), "assets/images/gridtest4.png", 64, 64);
+		grid.setTileProperties(1, FlxObject.NONE);
+		add(grid);
+
 	}
 
-
+	function movement():Void
+	{
+		if (FlxG.keys.anyPressed(["D, RIGHT"]))
+		{
+			var coords:Array<FlxPoint> = grid.findPath(FlxPoint.get(face.x, face.y), FlxPoint.get(200, 200));
+			if (coords != null)
+			{
+				movePath.start(face, coords);
+			}
+		}
+	}
 	override public function destroy():Void
 	{
 		super.destroy();
@@ -54,6 +63,7 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
+		movement();
 		super.update();
 	}	
 }
