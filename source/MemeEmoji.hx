@@ -10,16 +10,22 @@ import flixel.util.FlxColor;
 import flixel.util.FlxAngle;
  
 /**
- * ...
  * @author conspiracy
  */
+
 class MemeEmoji extends FlxSprite
 {      
-        public var speed:Float = 400;
+        public var speed:Float = 5;
+		public var moving:Bool = false;
 		
-		public var moving:Int = 0;
-		public var waypoint_x:Int = 0;
-		public var waypoint_y:Int = 0;
+		var x_speed:Float = 0;
+		var y_speed:Float = 0;
+		var waypoint_x:Float = FlxG.mouse.x - 16;
+		var waypoint_y:Float = FlxG.mouse.y - 16;
+		
+		var dist_x:Float = 0;
+		var dist_y:Float = 0;
+		var dist_total:Float = 0;
 		
        
         public function new(X:Float=0, Y:Float=0)
@@ -43,13 +49,43 @@ class MemeEmoji extends FlxSprite
                 movement();
                 super.update();
         }
-		private function movement():Void
-        {
+		public function movement():Void
+        {	
             if (FlxG.mouse.justPressed)
 			{
-				x = FlxG.mouse.x - 16;
-				y = FlxG.mouse.y - 16;
+				x += 1;
+				y += 1;
+				//sets current mouse co-ordinates as waypoint
+				waypoint_x= FlxG.mouse.x - 16;
+				waypoint_y = FlxG.mouse.y - 16;
+				
+				//calculates the x and y distances between player and mouse
+				dist_x = waypoint_x - x;
+				dist_y = waypoint_y - y;
+				dist_total = Math.sqrt(dist_x * dist_x + dist_y * dist_y);
+				
+				//Pythagoras' theorem, bitch
+				x_speed = speed * dist_x / dist_total;
+				y_speed = speed * dist_y / dist_total;
+				
+				//set moving to true, so that face starts moving
+				moving = true;
 			}
+			
+			if (moving == true) 
+			{
+				
+				x += x_speed;
+				y += y_speed;
+				
+				if (Math.abs(x - waypoint_x) <= x_speed || Math.abs(y - waypoint_y) <= y_speed) 
+				{
+					x = waypoint_x;
+					y = waypoint_y;
+					moving = false;
+				}
+			}
+			
 		}
        
 }
