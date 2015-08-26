@@ -1,3 +1,5 @@
-#yolo
-export/
-*.hxproj
+
+./export
+/export
+export/*
+./export/*
