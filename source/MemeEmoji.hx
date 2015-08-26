@@ -36,13 +36,6 @@ class MemeEmoji extends FlxSprite
                 loadGraphic("assets/images/memeface2.png", true, 32, 32);
                 animation.add("idle1", [1, 2, 3], 36, true);
                 animation.play("idle1");
-                setFacingFlip(FlxObject.RIGHT, false, false);
-                setFacingFlip(FlxObject.LEFT, true, false);
-                setFacingFlip(FlxObject.UP, false, false);
-                setFacingFlip(FlxObject.DOWN, false, false);
-                animation.add("lr", [1, 2, 3], 36, false);
-                animation.add("u", [1, 2, 3], 36, false);
-                animation.add("d", [1, 2, 3], 36, false);
                 drag.x = drag.y = 1600;
         }
        
@@ -58,13 +51,13 @@ class MemeEmoji extends FlxSprite
 				x += 1;
 				y += 1;
 				//sets current mouse co-ordinates as waypoint
-				waypoint_x= FlxG.mouse.x - 16;
+				waypoint_x = FlxG.mouse.x - 16;
 				waypoint_y = FlxG.mouse.y - 16;
 				
 				//calculates the x and y distances between player and mouse
 				dist_x = waypoint_x - x;
 				dist_y = waypoint_y - y;
-				dist_total = Math.sqrt(dist_x * dist_x + dist_y * dist_y);
+				dist_total = Math.sqrt((dist_x * dist_x) + (dist_y * dist_y));
 				
 				//Pythagoras' theorem, bitch
 				x_speed = speed * dist_x / dist_total;
@@ -90,7 +83,7 @@ class MemeEmoji extends FlxSprite
 				x += x_speed;
 				y += y_speed;
 				
-				if (Math.abs(x - waypoint_x) <= x_speed || Math.abs(y - waypoint_y) <= y_speed) 
+				if (Math.abs(x - waypoint_x) <= Math.abs(x_speed) || Math.abs(y - waypoint_y) <= Math.abs(y_speed)) 
 				{
 					x = waypoint_x;
 					y = waypoint_y;
