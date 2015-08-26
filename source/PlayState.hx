@@ -46,8 +46,8 @@ class PlayState extends FlxState
 	{
 		if (FlxG.mouse.justPressed)
 		{
-			face.x = FlxG.mouse.x;
-			face.y = FlxG.mouse.y;
+			face.x = FlxG.mouse.x - 16;
+			face.y = FlxG.mouse.y - 16;
 		}
 	}
 	
