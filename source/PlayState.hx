@@ -19,6 +19,7 @@ class PlayState extends FlxState
 {
 	public var grid:FlxTilemap;
 	public var face:MemeEmoji;
+	private var bg : FlxSprite = new FlxSprite (0, 0, "assets/images/visitors/HELLOPUNPUN.png");
 	//private var movePath = new FlxPath();
 	/**
 	 * Function that is called up when to state is created to set it up. 
@@ -26,6 +27,7 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		FlxG.camera.bgColor = 0x00000000;
+		add(bg);
 		createGrid();
 		face = new MemeEmoji(0, 0);
 		add(face);
