@@ -42,6 +42,7 @@ class PlayState extends FlxState
 		grid = new FlxTilemap();
 		grid.loadMap(Assets.getText("assets/data/grid2.csv"), "assets/images/gridtest4.png", 64, 64);
 		grid.setTileProperties(1, FlxObject.NONE);
+		grid.x = grid.y = 50;
 		add(grid);
 
 	}
