@@ -55,7 +55,7 @@ class MemeEmoji extends FlxSprite
 				y += 1;
 				//sets current mouse co-ordinates as waypoint
 				waypoint_x = FlxG.mouse.x - 16;
-				waypoint_y = FlxG.mouse.y - 16;
+				waypoint_y = FlxG.mouse.y - 30;
 				
 				//calculates the x and y distances between player and mouse
 				dist_x = waypoint_x - x;
