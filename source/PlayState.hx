@@ -20,6 +20,7 @@ class PlayState extends FlxState
 	public var grid:FlxTilemap;
 	public var face:MemeEmoji;
 	private var bg : FlxSprite = new FlxSprite (5, 0, "assets/images/visitors/HELLOPUNPUN.png");
+	private var imagebox:FlxSprite = new FlxSprite(544, 0, "assets/images/imagebox.png");
 	//private var movePath = new FlxPath();
 	/**
 	 * Function that is called up when to state is created to set it up. 
@@ -31,6 +32,7 @@ class PlayState extends FlxState
 		createGrid();
 		face = new MemeEmoji(0, 0);
 		add(face);
+		add(imagebox);
 		FlxG.sound.playMusic("assets/music/begin.mp3", 1, true);
 		
 	}
