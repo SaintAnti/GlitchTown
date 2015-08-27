@@ -28,7 +28,6 @@ class PlayState extends FlxState
 	{
 		super.create();
 		FlxG.camera.bgColor = 0x00000000;
-		add(bg);
 		createGrid();
 		face = new MemeEmoji(0, 0);
 		add(face);
