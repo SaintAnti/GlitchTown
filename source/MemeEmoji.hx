@@ -49,7 +49,7 @@ class MemeEmoji extends FlxSprite
         }
 		public function movement():Void
         {	
-            if (FlxG.mouse.justPressed && FlxG.mouse.x <= (64*7)-16 && FlxG.mouse.y <= (64*7)) // checks if the mouse is clicked within grid before doign movement.
+            if (FlxG.mouse.justPressed && FlxG.mouse.x <= (64*7)-16+50 && FlxG.mouse.y <= (64*7)+50) // checks if the mouse is clicked within grid before doign movement.
 			{
 				x += 1;
 				y += 1;
